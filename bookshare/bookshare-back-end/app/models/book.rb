@@ -1,4 +1,4 @@
 class Book < ApplicationRecord
-    has_many: reviews
-    belongs_to: bookshelf
+    has_many :reviews
+    belongs_to :bookshelf
 end
