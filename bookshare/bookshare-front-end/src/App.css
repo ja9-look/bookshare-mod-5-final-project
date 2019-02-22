@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Mallanna');
+
 .App {
   text-align: center;
+  font-family: 'Mallanna', sans-serif;
 }
 
 .App-header {
   background-color: #FFE2A9;
-  min-height: 20vh;
+  min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,14 +17,15 @@
 }
 
 .App-navbar-logo {
-  width: 15%;
+  width: 30%;
   display: flex;
   justify-content: flex-start;
 }
 
 .App-body {
   background-color: #FFE2A9;
-  min-height: 80vh;
+  font-family: 'Mallanna', sans-serif;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +34,28 @@
   color: white;
 }
 
-.signUpForm {
-  
+.navbar ul{
+  min-width: 90vw;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  float: left;
 }
 
+.navbar ul li {
+  font-size: 20px;
+}
+
+button {
+  border-radius: 20px;
+  padding: 4px;
+  margin: 5px 10px;
+}
+
+.signUpForm .hidden{
+  display: none;
+}
+
+.loginForm .hidden{
+  display: none;
+}

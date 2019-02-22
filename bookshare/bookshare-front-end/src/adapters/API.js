@@ -8,6 +8,7 @@ class API {
         this.booksURL = this.endPoint + `/books`
         this.usersURL = this.endPoint + `/users`
         this.loginURL = this.endPoint + `/login`
+        this.profileURL = this.endPoint + `/profile`
     }
 
     static createUser(user) {
@@ -16,6 +17,16 @@ class API {
 
     static login(user) {
         return this.post(this.loginURL, { user })
+    }
+
+    static getCurrentUser() {
+        return this.get(this.profileURL)
+    }    
+
+    static get(url) {
+        return fetch(url, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        }).then(resp => resp.json())
     }
 
     static post(url, data) {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import API from './adapters/API';
+import Navbar from './components/Navbar';
 import FormHolder from './containers/FormHolder';
 
-import bookshare_logo from './images/bookshare_logo.png';
 
 import './App.css';
 
@@ -10,11 +10,17 @@ class App extends Component {
 
   state = {
     books : [],
-    current_user : ``
+    current_user : ''
   }
 
   componentDidMount() {
-
+    if (localStorage.token) {
+      API.getCurrentUser().then(data => {
+        this.setState({
+          currentUser: data.user
+        })
+      })
+    }
   }
 
   handleLogin = (event) => {
@@ -53,19 +59,25 @@ class App extends Component {
       .then(data => this.login(data))
   }
 
-  handleSignUpToggle = () => {
+  handleLogOut = () => {
+    localStorage.removeItem('token')
+  }
 
+  handleSignUpToggle = () => {
+    const signUpForm = document.querySelector('.signUpForm')
+    signUpForm.classList.toggle('hidden')
   }
 
   handleLoginToggle = () => {
-
+    const loginForm = document.querySelector('.loginForm')
+    loginForm.classList.toggle('hidden')
   }
 
   render() {
     return (
       <div className="App">
         <header className={'App-header'}>
-          <img className={'App-navbar-logo'} src = { bookshare_logo } alt="Bookshare Logo" />
+          <Navbar handleLogOut={this.handleLogOut} />
         </header>
         <body className={'App-body'}>
           <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp}/>
