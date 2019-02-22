@@ -45,6 +45,10 @@
   font-size: 20px;
 }
 
+.welcomeLogo {
+  width: 100%;
+}
+
 button {
   font-family: 'Mallanna', sans-serif;
   border-radius: 10px;

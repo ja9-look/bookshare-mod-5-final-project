@@ -31,7 +31,7 @@ class App extends Component {
       password : event.target.password.value
     }
     API.login(user)
-      .then(data => this.login(data))
+    .then(data => this.login(data))
     event.target.username.value = ''
     event.target.password.value = ''
   }

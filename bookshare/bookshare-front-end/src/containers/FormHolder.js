@@ -2,7 +2,7 @@ import React from 'react';
 import SignUpForm from '../components/SignUpForm';
 import LoginForm from '../components/LoginForm';
 
-import bookshare_logo_slogan from '../images/bookshare_logo.png';
+import bookshare_logo_slogan from '../images/bookshare_logo_slogan.png';
 
 const FormHolder = (props) => {
 
