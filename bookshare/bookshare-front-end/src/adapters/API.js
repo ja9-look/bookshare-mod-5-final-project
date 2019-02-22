@@ -7,27 +7,32 @@ class API {
         this.endPoint = `http://localhost:3000/api/v1`
         this.booksURL = this.endPoint + `/books`
         this.usersURL = this.endPoint + `/users`
+        this.loginURL = this.endPoint + `/login`
     }
 
-    static newUser(){
-        return fetch(this.usersURL, {
+    static createUser(user) {
+        return this.post(this.usersURL, { user })
+    }
+
+    static login(user) {
+        return this.post(this.loginURL, { user })
+    }
+
+    static post(url, data) {
+        console.log(url)
+        return fetch(url, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                Accept: 'application/json'
+                "Content-Type": "application/json",
+                Accept: 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
-            body: JSON.stringify({
-                user: {
-                    username: 'test123',
-                    password: 'password',
-                    first_name: 'Test',
-                    last_name: 'User'
-                }
-            })
-        })
-        .then(data => data.json())
-        .then(d => console.log(d))
+            body: JSON.stringify(data)
+        }).then(data => data.json())
     }
 
 }
+
+API.init()
+
 export default API;
