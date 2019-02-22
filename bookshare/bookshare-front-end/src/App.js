@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import API from './adapters/API';
 import Navbar from './components/Navbar';
+import BookBrowser from './containers/BookBrowser';
 import FormHolder from './containers/FormHolder';
 
 
@@ -77,10 +78,17 @@ class App extends Component {
     return (
       <div className="App">
         <header className={'App-header'}>
-          <Navbar handleLogOut={this.handleLogOut} />
         </header>
         <body className={'App-body'}>
-          <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp}/>
+        {localStorage.token
+        ?
+        <div>
+          <Navbar handleLogOut={this.handleLogOut} />
+          <BookBrowser />
+        </div>
+        :
+          <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
+        }
         </body>
       </div>
     );
