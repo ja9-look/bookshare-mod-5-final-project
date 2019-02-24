@@ -10,17 +10,18 @@ import './App.css';
 class App extends Component {
 
   state = {
-    books : [],
     current_user : ''
   }
 
   componentDidMount() {
     if (localStorage.token) {
-      API.getCurrentUser().then(data => {
+      API.getCurrentUser()
+      .then(data => {
         this.setState({
           currentUser: data.user
         })
       })
+      .then(API.getAllBooks().then(data => console.log(data)))
     }
   }
 

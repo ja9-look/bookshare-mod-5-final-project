@@ -10,6 +10,10 @@ const Navbar = (props) => {
                     <li className={'brand_name_li'}>bookshare</li>
                     <li>My Bookshelf</li>
                     <li>Books</li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
                 </ul>
                 <button className={'logout_button'} onClick={props.handleLogOut}>Logout</button>
             </nav>

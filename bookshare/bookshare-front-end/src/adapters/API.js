@@ -3,7 +3,7 @@ import googleAPIKey from '../key.js'
 class API {
 
     static init(){
-        this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=`
+        this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=happiness`
         this.endPoint = `http://localhost:3000/api/v1`
         this.booksURL = this.endPoint + `/books`
         this.usersURL = this.endPoint + `/users`
@@ -21,11 +21,17 @@ class API {
 
     static getCurrentUser() {
         return this.get(this.profileURL)
-    }    
+    }
+
+    static getAllBooks() {
+        return this.get(this.googleBooksURL)
+    }
 
     static get(url) {
         return fetch(url, {
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+            method: 'GET',
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` 
+         }
         }).then(resp => resp.json())
     }
 
