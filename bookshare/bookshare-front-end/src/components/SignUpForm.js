@@ -3,8 +3,7 @@ import React from 'react';
 const SignUpForm = (props) => {
 
     return(
-        <div>
-            <h3>Sign Up</h3>
+        <div className={'signUpWrapper'}>
             <form className={'signUpForm'} onSubmit = {props.handleSignUp} >
                 <input type="text" name="first_name" placeholder="First Name" />
                 <input type="text" name="last_name" placeholder="Last Name" />                

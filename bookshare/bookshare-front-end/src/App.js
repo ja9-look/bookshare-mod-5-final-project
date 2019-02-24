@@ -65,13 +65,17 @@ class App extends Component {
   }
 
   handleSignUpToggle = () => {
-    const signUpForm = document.querySelector('.signUpForm')
-    signUpForm.classList.toggle('hidden')
+    const signUpWrapper = document.querySelector('.signUpWrapper')
+    const loginWrapper = document.querySelector('.loginWrapper')
+    signUpWrapper.classList.toggle('visible')
+    loginWrapper.classList.remove('visible')
   }
 
   handleLoginToggle = () => {
-    const loginForm = document.querySelector('.loginForm')
-    loginForm.classList.toggle('hidden')
+    const signUpWrapper = document.querySelector('.signUpWrapper')
+    const loginWrapper = document.querySelector('.loginWrapper')
+    loginWrapper.classList.toggle('visible')
+    signUpWrapper.classList.remove('visible')
   }
 
   render() {

@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Mallanna');
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
 
 .App {
   text-align: center;
-  font-family: 'Mallanna', sans-serif;
+  font-family: 'Comfortaa', sans-serif;
 }
 
 .App-navbar-logo {
@@ -12,9 +12,7 @@
 }
 
 .App-body {
-  background-image: url('./images/book_background.jpg');
-  background-size: cover;
-  font-family: 'Mallanna', sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,7 +23,7 @@
 }
 
 .navbar {
-  background-color: #FFE2A9;
+  background-color: transparent;
   position: absolute;
   min-width: 100vw;
   max-height: 8vh;
@@ -34,62 +32,103 @@
 }
 
 .navbar ul{
-  min-width: 90vw;
+  min-width: 80vw;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   list-style: none;
   float: left;
 }
 
 .navbar ul li {
   font-size: 20px;
+  color: #8c8383; 
 }
 
-.welcomeLogo {
-  width: 100%;
+.navbar ul li:hover {
+  color: #000000;
+  transition: 0.5s;
+}
+
+.navbar .brand_name_li {
+  font-size: 30px;
+  color: #e06969;
 }
 
 button {
-  font-family: 'Mallanna', sans-serif;
-  border-radius: 10px;
-  padding: 10px 20px;
-  margin: 5px 10px;
-  background-color: #ffffff;
-  color: #ED252F;
-  border:none;
+	padding: 16px 24px;
+  margin: 20px 40px;
+	font-size: 12px;
+	font-family: 'Comfortaa', sans-serif;
+	color: #ED252F;
+	letter-spacing: 5px;
+	text-transform: uppercase;
 }
 
-.signUpForm .hidden{
-  display: none;
-}
-
-.loginForm .hidden{
-  display: none;
+button:hover {
+  background-color: #000000;
+  color: #ffffff;
+  transition: 0.5s;
 }
 
 .form_holder {
-  background-color: #FFE2A9;
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 60vh;
+  background-image: url('./images/giphy.gif');
+  opacity: 0.7;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form_holder p{
+  font-size: 80px;
+  font-weight: bold;
+  font-family: 'Comfortaa';
+  color: #ED252F;
+  margin: 3em auto 1em auto;
+  display:block
+}
+
+.signUpWrapper {
+  display:none;
+  height: 0px;
+  margin-top: 30px;
+}
+
+.loginWrapper {
+  display:none;
+  height: 0px;
+  margin-top: 30px;
+}
+
+.signUpWrapper.visible{
+  display: block;
+}
+
+.loginWrapper.visible{
+  display: block;
 }
 
 form input{
-  font-family: 'Mallanna', sans-serif;
+  font-family: 'Comfortaa', sans-serif;
   font-size: 13px;
   width: 50%;
   padding: 8px;
-  border-radius: 5px;
+  margin: 3px auto;
   display: inline-block;
 }
 
 form input[type=submit] {
-  font-family: 'Mallanna', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  background-color: transparent;
-  border: none;
-  color: white;
+	padding: 12px 24px;
+  margin: 20px 40px;
+	font-size: 12px;
+	font-family: 'Comfortaa', sans-serif;
+	color: #ED252F;
+  letter-spacing: 5px;
+	text-transform: uppercase;
+}
+
+form input[type=submit]:hover{
+  background-color: #000000;
+  color: #ffffff;
+  transition: 0.5s;
 }

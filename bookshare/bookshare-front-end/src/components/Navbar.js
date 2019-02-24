@@ -1,5 +1,4 @@
 import React from 'react';
-import bookshare_logo from '../images/bookshare_logo.png';
 
 
 const Navbar = (props) => {
@@ -8,7 +7,7 @@ const Navbar = (props) => {
         <div>
             <nav className="navbar">
                 <ul>
-                    <li><img className={'App-navbar-logo'} src={bookshare_logo} alt="Bookshare Logo" /></li>
+                    <li className={'brand_name_li'}>bookshare</li>
                     <li>My Bookshelf</li>
                     <li>Books</li>
                 </ul>
