@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Switch, Route, withRouter } from 'react-router'
 import API from './adapters/API';
 import Navbar from './components/Navbar';
 import BookBrowser from './containers/BookBrowser';
 import FormHolder from './containers/FormHolder';
+import Aux from './hoc/Aux';
 
 
 import './App.css';
@@ -10,29 +12,36 @@ import './App.css';
 class App extends Component {
 
   state = {
-    current_user : ''
+    current_user: '',
+    logged_in: false
   }
 
   componentDidMount() {
     if (localStorage.token) {
       API.getCurrentUser()
-      .then(data => {
-        this.setState({
-          currentUser: data.user
+        .then(data => {
+          this.setState({
+            currentUser: data.user
+          })
         })
-      })
-      .then(API.getAllBooks().then(data => console.log(data)))
+        .then(API.getAllBooks().then(data => console.log(data)))
     }
   }
 
   handleLogin = (event) => {
     event.preventDefault()
     const user = {
-      username : event.target.username.value,
-      password : event.target.password.value
+      username: event.target.username.value,
+      password: event.target.password.value
     }
     API.login(user)
-    .then(data => this.login(data))
+      .then(data => {
+        this.login(data)
+        this.props.history.push("/book_browser")
+        this.setState({
+          logged_in: true
+        })
+      })
     event.target.username.value = ''
     event.target.password.value = ''
   }
@@ -58,11 +67,20 @@ class App extends Component {
 
   createUser = (newUser) => {
     API.createUser(newUser)
-      .then(data => this.login(data))
+      .then(data => {
+        this.login(data)
+                this.props.history.push("/book_browser")
+        this.setState({
+          logged_in: true
+        })
+      })
   }
 
   handleLogOut = () => {
     localStorage.removeItem('token')
+    this.setState({
+      logged_in: false
+    })
   }
 
   handleSignUpToggle = () => {
@@ -81,23 +99,48 @@ class App extends Component {
 
   render() {
     return (
+      // <div className="App">
+      //   <header className={'App-header'}>
+      //   </header>
+      //   <body className={'App-body'}>
+      //   {localStorage.token
+      //   ?
+      //   <div>
+      //     <Navbar handleLogOut={this.handleLogOut} />
+      //     <BookBrowser />
+      //   </div>
+      //   :
+      //     <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
+      //   }
+      //   </body>
+      // </div>
       <div className="App">
-        <header className={'App-header'}>
-        </header>
-        <body className={'App-body'}>
-        {localStorage.token
-        ?
-        <div>
-          <Navbar handleLogOut={this.handleLogOut} />
-          <BookBrowser />
+
+
+
+        <div className={'App-body'}>
+
+          <Switch>
+            <Route exact path="/" component={() => {
+              return <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
+            }}
+            />
+            <Route exact path="/book_browser" component={() => {
+              return (
+                <Aux>
+                  <Navbar handleLogOut={this.handleLogOut} />
+                  <BookBrowser />
+                </Aux>
+              )
+            }
+            } />
+          </Switch>
+
         </div>
-        :
-          <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
-        }
-        </body>
+
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

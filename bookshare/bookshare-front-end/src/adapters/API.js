@@ -1,9 +1,9 @@
-import googleAPIKey from '../key.js'
+// import googleAPIKey from '../key.js';
 
 class API {
 
     static init(){
-        this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=happiness`
+        this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=`
         this.endPoint = `http://localhost:3000/api/v1`
         this.booksURL = this.endPoint + `/books`
         this.usersURL = this.endPoint + `/users`
@@ -23,8 +23,13 @@ class API {
         return this.get(this.profileURL)
     }
 
-    static getAllBooks() {
-        return this.get(this.googleBooksURL)
+    static getAllBooks(searchTerm) {
+        return this.getFromGoogle(this.googleBooksURL, searchTerm)
+    }
+
+    static getFromGoogle(url, searchTerm) {
+        return fetch(`${url}${searchTerm}`)
+        .then(resp => resp.json())
     }
 
     static get(url) {
@@ -36,7 +41,6 @@ class API {
     }
 
     static post(url, data) {
-        console.log(url)
         return fetch(url, {
             method: 'POST',
             headers: {

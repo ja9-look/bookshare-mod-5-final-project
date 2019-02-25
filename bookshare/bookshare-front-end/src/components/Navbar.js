@@ -1,15 +1,17 @@
 import React from 'react';
 
+import Aux from '../hoc/Aux';
+
 
 const Navbar = (props) => {
 
     return(
-        <div>
+        <Aux>
             <nav className="navbar">
                 <ul>
                     <li className={'brand_name_li'}>bookshare</li>
-                    <li>My Bookshelf</li>
-                    <li>Books</li>
+                    <li>MY BOOKSHELF</li>
+                    <li>BOOKS</li>
                     <li></li>
                     <li></li>
                     <li></li>
@@ -17,7 +19,7 @@ const Navbar = (props) => {
                 </ul>
                 <button className={'logout_button'} onClick={props.handleLogOut}>Logout</button>
             </nav>
-        </div>
+        </Aux>
     )
 
 }

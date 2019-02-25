@@ -17,18 +17,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: black;
 }
 
 .navbar {
   background-color: transparent;
-  position: absolute;
-  min-width: 100vw;
   max-height: 8vh;
-  top: 0;
-  left: 0;
+  width: 100%;
 }
 
 .navbar ul{
@@ -41,8 +37,9 @@
 }
 
 .navbar ul li {
-  font-size: 20px;
+  font-size: 16px;
   color: #8c8383; 
+  letter-spacing: 5px;
 }
 
 .navbar ul li:hover {
@@ -53,6 +50,7 @@
 .navbar .brand_name_li {
   font-size: 30px;
   color: #e06969;
+  padding-bottom: 5px;
 }
 
 button {
@@ -99,13 +97,11 @@ button:hover {
 
 .signUpWrapper {
   display:none;
-  height: 0px;
   margin-top: 30px;
 }
 
 .loginWrapper {
   display:none;
-  height: 0px;
   margin-top: 30px;
 }
 
@@ -117,18 +113,22 @@ button:hover {
   display: block;
 }
 
-form input{
+.loginForm input,
+.signUpForm input {
   font-family: 'Comfortaa', sans-serif;
   font-size: 13px;
-  width: 50%;
+  width: 90%;
+  max-width: 400px;
   padding: 8px;
   margin: 3px auto;
-  display: inline-block;
+  display: block;
 }
 
-form input[type=submit] {
+.loginForm input[type=submit],
+.signUpForm input[type=submit] {
 	padding: 12px 24px;
-  margin: 20px 40px;
+  margin: 20px auto;
+  max-width: 200px;
 	font-size: 12px;
 	font-family: 'Comfortaa', sans-serif;
 	color: #e06969;
@@ -136,8 +136,64 @@ form input[type=submit] {
 	text-transform: uppercase;
 }
 
-form input[type=submit]:hover{
+.loginForm input[type=submit]:hover,
+.signUpForm input[type=submit]:hover {
   background-color: #e06969;
   color: #ffffff;
   transition: 0.5s;
+}
+
+.contentArea {
+  width: 100%;
+  flex: 1 1 auto;
+}
+
+.searchBarForm {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1em;
+  margin-right: 3.6em;
+}
+
+.searchBarForm input {
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 13px;
+  width: 90%;
+  max-width: 400px;
+  padding: 8px;
+}
+
+.searchBarForm input[type=submit] {
+	padding: 12px 24px;
+  font-size: 12px;
+  margin-left: 10px;
+  max-width: 200px;
+	font-family: 'Comfortaa', sans-serif;
+	color: #e06969;
+  letter-spacing: 5px;
+	text-transform: uppercase;
+}
+
+.searchBarForm input[type=submit]:hover {
+  background-color: #e06969;
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+.booksBrowserWrapper {
+  max-width: 1600px;
+  width: 90%;
+  margin: 2em auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bookCardWrapper {
+  width: 300px;
+  margin-bottom: 1em;
+}
+
+.bookCardWrapper p {
+  font-size: 12px;
 }
