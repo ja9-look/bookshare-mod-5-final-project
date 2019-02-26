@@ -29,6 +29,9 @@ class BookBrowser extends Component {
     render() {
         return(
             <div className={'contentArea'}>
+                <video autoPlay loop className={'video-background'} muted playsInline>
+                    <source src={require('../images/distant_lights.mp4')} type="video/mp4" />
+                </video>
                 <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
                 <div className={'booksBrowserWrapper'}>
                     <Switch>
