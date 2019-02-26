@@ -125,7 +125,7 @@ class App extends Component {
               return <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
             }}
             />
-            <Route exact path="/book_browser" component={() => {
+            <Route path="/book_browser" component={() => {
               return (
                 <Aux>
                   <Navbar handleLogOut={this.handleLogOut} />

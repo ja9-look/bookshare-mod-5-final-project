@@ -9,9 +9,9 @@ const Navbar = (props) => {
         <Aux>
             <nav className="navbar">
                 <ul>
-                    <li className={'brand_name_li'}>bookshare</li>
+                    <li className={'brand_name_li'}><a href="/book_browser" >bookshare</a></li>
                     <li>MY BOOKSHELF</li>
-                    <li>BOOKS</li>
+                    <li>CATEGORIES</li>
                     <li></li>
                     <li></li>
                     <li></li>

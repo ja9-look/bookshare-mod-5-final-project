@@ -47,10 +47,11 @@
   transition: 0.5s;
 }
 
-.navbar .brand_name_li {
+.navbar .brand_name_li a {
   font-size: 30px;
   color: #e06969;
   padding-bottom: 5px;
+  text-decoration: none;
 }
 
 button {
@@ -187,11 +188,18 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
 }
 
 .bookCardWrapper {
   width: 300px;
-  margin-bottom: 1em;
+  margin: 0 0.5em 1em 0.5em;
+  border: 1;
+}
+
+.bookCardWrapper h6 {
+  font-size: 14px;
+  text-transform: uppercase;
 }
 
 .bookCardWrapper p {

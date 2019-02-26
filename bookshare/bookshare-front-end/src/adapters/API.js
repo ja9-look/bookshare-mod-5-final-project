@@ -28,7 +28,7 @@ class API {
     }
 
     static getFromGoogle(url, searchTerm) {
-        return fetch(`${url}${searchTerm}`)
+        return fetch(`${url}${searchTerm}&maxResults=40`)
         .then(resp => resp.json())
     }
 

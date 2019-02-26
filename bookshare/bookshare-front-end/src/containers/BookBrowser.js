@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
-import { withRouter } from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 
 import API from '../adapters/API';
+import Aux from '../hoc/Aux';
 import SearchBar from '../components/SearchBar';
-import BookCard from '../components/BookCard';
+import SearchResults from './SearchResults';
 
 class BookBrowser extends Component {
-
-    state = {
-        books: []
-    }
 
     componentDidMount() {
         // if (!this.state.books.length){
@@ -26,11 +23,7 @@ class BookBrowser extends Component {
     handleSearchSubmit = (event) => {
         event.preventDefault()
         const searchTerm = event.target.searchTerm.value
-        API.getAllBooks(searchTerm)
-        .then((data) => this.setState({
-            books: data.items
-        })
-        )
+        this.props.history.push(`/book_browser/${searchTerm}`)
     }
 
     render() {
@@ -38,9 +31,11 @@ class BookBrowser extends Component {
             <div className={'contentArea'}>
                 <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
                 <div className={'booksBrowserWrapper'}>
-                    {this.state.books.map(book => 
-                        <BookCard key={book.id} book={ book }/>  
-                    )}
+                    <Switch>
+                        <Route exact path="/book_browser/:searchTerm">
+                            <SearchResults />
+                        </Route>
+                    </Switch>
                 </div>
             </div>
         )
