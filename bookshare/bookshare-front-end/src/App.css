@@ -42,15 +42,26 @@
   letter-spacing: 5px;
 }
 
+.navbar .brand_name_li {
+  font-size: 30px;
+  color: #e06969; 
+  letter-spacing: 5px;
+  padding-bottom: 0.2em;
+}
+
+.navbar ul li a {
+  font-size: 16px;
+  color: #ffffff; 
+  letter-spacing: 5px;
+  text-decoration: none;
+}
+
 .navbar ul li:hover {
   color: #e06969;
   transition: 0.5s;
 }
 
-.navbar .brand_name_li a {
-  font-size: 30px;
-  color: #e06969;
-  padding-bottom: 5px;
+a {
   text-decoration: none;
 }
 
@@ -69,6 +80,7 @@ button:hover {
   color: #ffffff;
   transition: 0.5s;
 }
+
 
 .form_holder {
   width: 100vw;
@@ -167,7 +179,8 @@ button:hover {
 .searchBarForm input[type=submit] {
 	padding: 12px 24px;
   font-size: 12px;
-  margin-left: 10px;
+  margin-left: 0.5em;
+  margin-right: 3.7em;
   max-width: 200px;
 	font-family: 'Comfortaa', sans-serif;
 	color: #e06969;
@@ -192,13 +205,18 @@ button:hover {
 }
 
 .bookCardWrapper {
-  width: 300px;
+  width: 250px;
+  height: 380px;
   margin: 0 0.5em 1em 0.5em;
-  border: 1;
+  padding: 0.5em 0.5em 0.2em 0.5em;
+  background-color: #ffffff40;
+  border-radius: 20px;
+  box-shadow: 5px 5px #88888840;
 }
 
 .bookCardWrapper h6 {
   font-size: 14px;
+  margin-bottom: 2px;
   text-transform: uppercase;
 }
 

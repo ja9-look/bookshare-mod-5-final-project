@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from 'react-router'
+
 import API from './adapters/API';
 import Navbar from './components/Navbar';
 import BookBrowser from './containers/BookBrowser';
+import Bookshelf from './containers/Bookshelf';
 import FormHolder from './containers/FormHolder';
 import Aux from './hoc/Aux';
 
@@ -99,25 +101,8 @@ class App extends Component {
 
   render() {
     return (
-      // <div className="App">
-      //   <header className={'App-header'}>
-      //   </header>
-      //   <body className={'App-body'}>
-      //   {localStorage.token
-      //   ?
-      //   <div>
-      //     <Navbar handleLogOut={this.handleLogOut} />
-      //     <BookBrowser />
-      //   </div>
-      //   :
-      //     <FormHolder handleSignUpToggle={this.handleSignUpToggle} handleLoginToggle={this.handleLoginToggle} handleLogin={this.handleLogin} handleSignUp={this.handleSignUp} />
-      //   }
-      //   </body>
-      // </div>
       <div className="App">
-
-
-
+      
         <div className={'App-body'}>
 
           <Switch>
@@ -128,12 +113,21 @@ class App extends Component {
             <Route path="/book_browser" component={() => {
               return (
                 <Aux>
-                  <Navbar handleLogOut={this.handleLogOut} />
+                  <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser}/>
                   <BookBrowser />
                 </Aux>
               )
             }
             } />
+            <Route path="/bookshelves" component={() => {
+              
+              return (
+                <Aux>
+                  <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser} />
+                  <Bookshelf currentUser={this.state.currentUser} />
+                </Aux>
+              )
+            }} />
           </Switch>
 
         </div>

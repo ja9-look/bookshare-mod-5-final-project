@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import { Switch, Route, withRouter } from 'react-router';
 
-import API from '../adapters/API';
-import Aux from '../hoc/Aux';
 import SearchBar from '../components/SearchBar';
 import SearchResults from './SearchResults';
 
@@ -35,9 +33,11 @@ class BookBrowser extends Component {
                 <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
                 <div className={'booksBrowserWrapper'}>
                     <Switch>
-                        <Route exact path="/book_browser/:searchTerm">
-                            <SearchResults />
-                        </Route>
+                        <Route exact path="/book_browser/:searchTerm" component={() => {
+                           return(
+                               <SearchResults />
+                           ) 
+                        }} />                       
                     </Switch>
                 </div>
             </div>

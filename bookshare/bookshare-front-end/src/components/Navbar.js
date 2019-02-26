@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import Aux from '../hoc/Aux';
 
@@ -9,15 +10,15 @@ const Navbar = (props) => {
         <Aux>
             <nav className="navbar">
                 <ul>
-                    <li className={'brand_name_li'}><a href="/book_browser" >bookshare</a></li>
-                    <li>MY BOOKSHELF</li>
+                    <Link to="/book_browser"><li className={'brand_name_li'}>bookshare</li></Link>
+                    <Link to={props.currentUser ? `/bookshelves/${props.currentUser.bookshelf}` : '/'}><li>MY BOOKSHELF</li></Link>
                     <li>CATEGORIES</li>
                     <li></li>
                     <li></li>
                     <li></li>
                     <li></li>
                 </ul>
-                <button className={'logout_button'} onClick={props.handleLogOut}>Logout</button>
+                <Link to="/"><button className={'logout_button'} onClick={props.handleLogOut}>Logout</button></Link>
             </nav>
         </Aux>
     )
