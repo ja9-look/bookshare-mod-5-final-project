@@ -39,7 +39,7 @@ class Categories extends Component{
                 {this.state.bookCategories.map(category => {
                     return (
                     <Link to={`/book_browser/categories/${category}`}>
-                        <div className={`categoryCard ${category}`}>
+                        <div className={`categoryCard ${category}`} key={category.id}>
                             <p>{category}</p>
                         </div>
                     </Link>
