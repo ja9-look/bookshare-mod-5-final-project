@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_21_142331) do
+ActiveRecord::Schema.define(version: 2019_02_27_112245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "api_v1_books", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "book_bookshelves", force: :cascade do |t|
+    t.integer "bookshelf_id"
+    t.integer "book_id"
+    t.boolean "read"
+    t.boolean "bought"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -28,14 +37,11 @@ ActiveRecord::Schema.define(version: 2019_02_21_142331) do
     t.integer "avg_rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "isbn"
   end
 
   create_table "bookshelves", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "read"
-    t.integer "bought"
-    t.integer "to_read"
-    t.integer "favourites"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

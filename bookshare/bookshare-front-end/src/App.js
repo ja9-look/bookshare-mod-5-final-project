@@ -119,15 +119,18 @@ class App extends Component {
               )
             }
             } />
-            <Route path="/bookshelves" component={() => {
-              
-              return (
-                <Aux>
-                  <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser} />
-                  <Bookshelf currentUser={this.state.currentUser} />
-                </Aux>
-              )
-            }} />
+            { this.state.currentUser ?
+              <Route path={`/bookshelves/${this.state.currentUser.bookshelf}`} component={() => {
+                return (
+                  <Aux>
+                    <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser} />
+                    <Bookshelf currentUser={this.state.currentUser} />
+                  </Aux>
+                )
+              }} />
+              :
+              null
+            }
           </Switch>
 
         </div>

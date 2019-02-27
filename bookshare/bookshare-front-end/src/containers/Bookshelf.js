@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../adapters/API';
 
 class Bookshelf extends Component {
 
@@ -9,9 +10,18 @@ class Bookshelf extends Component {
         favourites: []
     }
 
+    componentDidMount = () => {
+        if (this.props.currentUser) {
+            API.getBookshelf(this.props.currentUser.bookshelf).then(data => {
+                console.log(data)
+            })
+            console.log(`user:`, this.props.currentUser)
+        }
+    }
+
     render(){
 
-        console.log(`bookshelf:`, this.props.currentUser)
+        console.log(`user:`, this.props.currentUser)
 
         return(
             <div className={'contentArea'}>

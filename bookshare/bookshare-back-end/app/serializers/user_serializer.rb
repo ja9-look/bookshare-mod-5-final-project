@@ -1,7 +1,7 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :username, :password, :first_name, :last_name, :bookshelf
+  attributes :id, :username, :password, :first_name, :last_name, :bookshelf
 
   def bookshelf
-    self.object.bookshelf.id
+    self.object.bookshelf.id if self.object.bookshelf
   end
 end
