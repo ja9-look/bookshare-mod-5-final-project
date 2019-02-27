@@ -1,8 +1,10 @@
 import React, {Component} from 'react';
 import { Switch, Route, withRouter } from 'react-router';
 
+import Aux from '../hoc/Aux';
 import SearchBar from '../components/SearchBar';
 import SearchResults from './SearchResults';
+import Categories from './Categories';
 
 class BookBrowser extends Component {
 
@@ -33,11 +35,20 @@ class BookBrowser extends Component {
                 <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
                 <div className={'booksBrowserWrapper'}>
                     <Switch>
+                        <Route exact path="/book_browser/categories" component={() => {
+                            return(
+                                <Aux>
+                                    <Categories />
+                                </Aux>
+                            )
+                        }} />                       
                         <Route exact path="/book_browser/:searchTerm" component={() => {
                            return(
-                               <SearchResults />
+                               <Aux>
+                                   <SearchResults />
+                               </Aux>
                            ) 
-                        }} />                       
+                        }} />
                     </Switch>
                 </div>
             </div>

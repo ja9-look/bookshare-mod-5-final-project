@@ -12,7 +12,7 @@ const Navbar = (props) => {
                 <ul>
                     <Link to="/book_browser"><li className={'brand_name_li'}>bookshare</li></Link>
                     <Link to={props.currentUser ? `/bookshelves/${props.currentUser.bookshelf}` : '/'}><li>MY BOOKSHELF</li></Link>
-                    <li>CATEGORIES</li>
+                    <Link to="/book_browser/categories"><li>CATEGORIES</li></Link>
                     <li></li>
                     <li></li>
                     <li></li>

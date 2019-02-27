@@ -16,6 +16,7 @@ class BookCard extends Component {
                     <h6 className={'bookTitle'}>{book.title ? (book.title.length > 20 ? book.title.substring(0, 20) + `...` : book.title) : "(No Title Available)"}</h6>
                     <p className={'bookAuthor'}>{book.authors ? book.authors[0] : "(No Author Available)"}</p>
                     <p className={'bookDescription'}>{book.description ? (book.description.length > 150 ? book.description.substring(0, 150)+`...` : book.description) : "(No description available)"}</p>
+                    <button className={'addToBookshelfButton'}> + Bookshelf</button>
                 </div>
             </Link>
         )

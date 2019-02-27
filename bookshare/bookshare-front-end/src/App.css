@@ -81,10 +81,13 @@ button:hover {
   transition: 0.5s;
 }
 
-
 .form_holder {
   width: 100vw;
   height: 100vh;
+}
+
+.addToBookshelfButton {
+  font-size: 8px;
 }
 
 .form_holder p{
@@ -206,7 +209,7 @@ button:hover {
 
 .bookCardWrapper {
   width: 250px;
-  height: 380px;
+  height: 480px;
   margin: 0 0.5em 1em 0.5em;
   padding: 0.5em 0.5em 0.2em 0.5em;
   background-color: #ffffff40;
@@ -223,3 +226,150 @@ button:hover {
 .bookCardWrapper p {
   font-size: 12px;
 }
+
+.categoryBrowser {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.categoryCard {
+  width: 200px;
+  height: 200px;
+  background-color: transparent;
+  border-radius: 20px;
+  box-shadow: 5px 5px #88888840;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px;
+}
+
+.categoryCard p{
+  color: #ffffff;
+  font-weight: bold;
+  display: flex;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+.categoryCard.art {
+  background: url('./images/art.jpg');
+  background-size: cover;
+}
+
+.categoryCard.biography {
+  background: url('./images/biography.jpg');
+  background-size: cover;
+}
+
+.categoryCard.business {
+  background: url('./images/business.jpg');
+  background-size: cover;
+}
+
+.categoryCard.comics {
+  background: url('./images/comics.jpg');
+  background-size: cover;
+}
+
+.categoryCard.crafts {
+  background: url('./images/crafts.jpg');
+  background-size: cover;
+}
+
+.categoryCard.culinary {
+  background: url('./images/culinary.jpg');
+  background-size: cover;
+}
+
+.categoryCard.education {
+  background: url('./images/education.jpg');
+  background-size: cover;
+}
+
+.categoryCard.entertainment {
+  background: url('./images/entertainment.jpg');
+  background-size: cover;
+}
+
+.categoryCard.fantasy {
+  background: url('./images/fantasy.jpg');
+  background-size: cover;
+}
+
+.categoryCard.fiction {
+  background: url('./images/fiction.jpg');
+  background-size: cover;
+}
+
+.categoryCard.fitness {
+  background: url('./images/fitness.jpg');
+  background-size: cover;
+}
+
+.categoryCard.history {
+  background: url('./images/history.jpg');
+  background-size: cover;
+}
+
+.categoryCard.horror {
+  background: url('./images/horror.jpg');
+  background-size: cover;
+}
+
+.categoryCard.language {
+  background: url('./images/language.jpg');
+  background-size: cover;
+}
+
+.categoryCard.literature {
+  background: url('./images/literature.jpg');
+  background-size: cover;
+}
+
+.categoryCard.math {
+  background: url('./images/math.jpg');
+  background-size: cover;
+}
+
+.categoryCard.medical {
+  background: url('./images/medical.jpg');
+  background-size: cover;
+}
+
+.categoryCard.mystery {
+  background: url('./images/mystery.jpg');
+  background-size: cover;
+}
+
+.categoryCard.travel {
+  background: url('./images/travel.jpg');
+  background-size: cover;
+}
+
+.categoryCard.religion {
+  background: url('./images/religion.jpg');
+  background-size: cover;
+}
+
+.categoryCard.romance {
+  background: url('./images/romance.jpg');
+  background-size: cover;
+}
+
+.categoryCard.science {
+  background: url('./images/science.jpg');
+  background-size: cover;
+}
+
+.categoryCard.self-help {
+  background: url('./images/self-help.jpg');
+  background-size: cover;
+}
+
+.categoryCard.technology {
+  background: url('./images/technology.jpg');
+  background-size: cover;
+}
+

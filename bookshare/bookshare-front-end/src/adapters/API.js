@@ -37,6 +37,11 @@ class API {
         .then(resp => resp.json())
     }
 
+    static getBooksByCategory(url, category) {
+        return fetch(`${url}subject:${category}&maxResults=40`)
+        .then(resp => resp.json())
+    }
+
 
     static get(url) {
         return fetch(url, {

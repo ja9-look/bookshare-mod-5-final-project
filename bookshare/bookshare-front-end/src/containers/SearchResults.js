@@ -13,10 +13,11 @@ class SearchResults extends Component{
 
     componentDidMount(){
         API.getAllBooks(this.props.match.params.searchTerm)
-            .then((data) => this.setState({
-                books: data.items
+            .then((data) => {
+                console.log(data)
+                !data.error && 
+                this.setState({books: data.items})
             })
-        )
     }
 
     render(){
