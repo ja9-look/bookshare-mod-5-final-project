@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { Switch, Route, withRouter } from 'react-router';
 
-import Aux from '../hoc/Aux';
 import SearchBar from '../components/SearchBar';
 import SearchResults from './SearchResults';
 import Categories from './Categories';
@@ -9,12 +8,6 @@ import Categories from './Categories';
 class BookBrowser extends Component {
 
     componentDidMount() {
-        // if (!this.state.books.length){
-        //     API.getAllBooks('sad')
-        //     .then((data) => this.setState({
-        //         books: data
-        //     }))
-        // }
         if (!localStorage.token) {
             this.props.history.push("/")
         }
@@ -35,18 +28,14 @@ class BookBrowser extends Component {
                 <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
                 <div className={'booksBrowserWrapper'}>
                     <Switch>
-                        <Route exact path="/book_browser/categories" component={() => {
+                        <Route path="/book_browser/categories" component={() => {
                             return(
-                                <Aux>
                                     <Categories />
-                                </Aux>
                             )
                         }} />                       
                         <Route exact path="/book_browser/:searchTerm" component={() => {
                            return(
-                               <Aux>
                                    <SearchResults />
-                               </Aux>
                            ) 
                         }} />
                     </Switch>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Switch, Route, Link } from 'react-router-dom';
+import CategoryResults from './CategoryResults';
 
 class Categories extends Component{
 
@@ -36,15 +37,26 @@ class Categories extends Component{
 
         return(
             <div className="categoryBrowser">
-                {this.state.bookCategories.map(category => {
-                    return (
-                    <Link to={`/book_browser/categories/${category}`}>
-                        <div className={`categoryCard ${category}`} key={category.id}>
-                            <p>{category}</p>
-                        </div>
-                    </Link>
-                    )
-                })}
+                <Switch>
+                    <Route exact path="/book_browser/categories" component={() => {
+                        return this.state.bookCategories.map(category => {
+                            return (
+                                <Link to={`/book_browser/categories/${category}`}>
+                                    <div className={`categoryCard ${category}`}>
+                                        <img src={require(`../images/${category}.jpg`)} />
+                                        <p>{category}</p>
+                                    </div>
+                                </Link>
+                            )
+                        })
+                    }} />
+                    <Route path="/book_browser/categories/:category" component={() => {
+                        return (
+                            <CategoryResults />
+                        )
+                    }}
+                    />
+                </Switch>
             </div>
         )
     }
