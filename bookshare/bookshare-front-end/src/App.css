@@ -43,10 +43,11 @@
 }
 
 .navbar .brand_name_li {
-  font-size: 30px;
+  font-size: 40px;
+  font-weight: bold;
   color: #e06969; 
   letter-spacing: 5px;
-  padding-bottom: 0.2em;
+  padding-bottom: 0.4em;
 }
 
 .navbar ul li a {
@@ -291,4 +292,25 @@ button:hover {
 
 .welcomeMessage span {
   color: #e06969;
+}
+
+.bookDetails {
+  max-width: 50vw;
+  margin: auto;
+  padding: 2em 4em;
+  background-color: #ffffff40;
+  border-radius: 20px;
+}
+
+.bookDetails h4 {
+  text-transform: uppercase;
+}
+
+.bookDetails h6 {
+  padding-bottom: 10px;
+}
+
+.bookDetails p {
+  padding-top: 20px;
+  font-size: 14px;
 }

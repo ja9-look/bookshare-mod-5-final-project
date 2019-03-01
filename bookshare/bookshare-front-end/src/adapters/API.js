@@ -32,6 +32,11 @@ class API {
         return this.get(this.bookshelfURL + `/${id}`)
     }
 
+    static getBooksByIsbn(isbn){
+        return fetch(`${this.googleBooksURL}isbn:${isbn}`)
+        .then(resp => resp.json())
+    }
+
     static getFromGoogle(url, searchTerm) {
         return fetch(`${url}${searchTerm}&maxResults=40`)
             .then(resp => resp.json())

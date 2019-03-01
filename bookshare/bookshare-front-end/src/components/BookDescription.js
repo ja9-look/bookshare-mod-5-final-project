@@ -5,27 +5,35 @@ import API from '../adapters/API';
 
 class BookDescription extends Component{
 
-    state={
-        booksByIsbn: []
+    state = {
+        data: []
     }
 
-    componentDidMount() {
-        API.getFromGoogle(this.props.match.params.isbn)
+    componentDidMount(){
+        API.getBooksByIsbn(this.props.match.params.isbn)
         .then(data => this.setState({
-            booksByIsbn : data.i
-        }))
+            data
+        })
+        )
     }
 
     render(){
 
-        console.log(this.props.match.params.isbn)
-
+        const book = this.state.data.items
+        console.log(`books:`, book)
         return(
-            <div>
-                <p>book description</p>
-                <p>{this.props.match.params.isbn}</p>
-            </div>
-        )
+        book ? 
+                <div className="bookDetails">
+                    <img alt={book[0].volumeInfo.title} src={book[0].volumeInfo.imageLinks ? book[0].volumeInfo.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} />
+                    <h4>{book[0].volumeInfo.title}</h4>
+                    <h6>ISBN: {this.props.match.params.isbn}</h6>
+                    <h6>{book[0].volumeInfo.authors ? book[0].volumeInfo.authors.map(author => `| ${author} |`) : `(No Description Available)`}</h6>
+                    <p>{book[0].volumeInfo.description}</p>
+                </div>
+            : 
+            null
+        )      
+        
     }
 }
 
