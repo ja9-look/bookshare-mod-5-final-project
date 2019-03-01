@@ -4,6 +4,7 @@ import API from '../adapters/API';
 class Bookshelf extends Component {
 
     state={
+        allBooks: [],
         read: [],
         bought: [],
         to_read: [],

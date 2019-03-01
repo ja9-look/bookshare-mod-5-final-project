@@ -43,7 +43,7 @@ class Categories extends Component{
                             return (
                                 <Link to={`/book_browser/categories/${category}`}>
                                     <div className={`categoryCard ${category}`}>
-                                        <img src={require(`../images/${category}.jpg`)} />
+                                        <img alt={category} src={require(`../images/${category}.jpg`)} />
                                         <p>{category}</p>
                                     </div>
                                 </Link>

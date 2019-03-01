@@ -2,7 +2,7 @@
 
 class API {
 
-    static init(){
+    static init() {
         this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=`
         this.endPoint = `http://localhost:3000/api/v1`
         this.booksURL = this.endPoint + `/books`
@@ -34,20 +34,21 @@ class API {
 
     static getFromGoogle(url, searchTerm) {
         return fetch(`${url}${searchTerm}&maxResults=40`)
-        .then(resp => resp.json())
+            .then(resp => resp.json())
     }
 
     static getBooksByCategory(url, category) {
         return fetch(`${url}subject:${category}&maxResults=40`)
-        .then(resp => resp.json())
+            .then(resp => resp.json())
     }
 
 
     static get(url) {
         return fetch(url, {
             method: 'GET',
-            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` 
-         }
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
         }).then(resp => resp.json())
     }
 

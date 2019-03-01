@@ -2,28 +2,32 @@ import React, {Component} from 'react';
 import { withRouter } from 'react-router-dom';
 
 import API from '../adapters/API';
+import BookCard from '../components/BookCard';
 
 class CategoryResults extends Component {
 
     state={
-        data: []
+        booksByCategory: []
     }
 
     componentDidMount(){
         API.getAllBooks(this.props.match.params.category)
         .then(data => {
             this.setState({
-                data
+                booksByCategory: data.items
             })
         })
     }
 
     render(){
-        console.log(`bookadiedooda:`, this.state.data)
         return(
-            <div>
-                <p>category results</p>
-                <p>{this.props.match.params.category}</p>
+            <div className={'categoryResultsBrowser'}>
+                <h4>{this.props.match.params.category}</h4>
+                <div className={'booksBrowserWrapper'}>
+                    {this.state.booksByCategory.map(book => 
+                        <BookCard book={book} />
+                    )}
+                </div>
             </div>
         )
     }

@@ -261,8 +261,6 @@ button:hover {
   width: 100%;
 }
 
-
-
 .categoryCard img {
   position: absolute;
   width: 170%;
@@ -275,4 +273,22 @@ button:hover {
 .categoryCard:hover img {
   width: 200%;
   transform: translate(-50%, -50%) rotate(-3deg);
+}
+
+.categoryResultsBrowser h4 {
+  text-transform: uppercase;
+  color: #ffffff;
+  justify-content: flex-start;
+  font-family: 'Comfortaa', sans-serif;
+  letter-spacing: 5px;
+  font-size: 40px;
+}
+
+.welcomeMessage {
+  color: #ffffff;
+  left: 0;
+}
+
+.welcomeMessage span {
+  color: #e06969;
 }
