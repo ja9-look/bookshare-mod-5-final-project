@@ -1,4 +1,4 @@
 class BookshelfSerializer < ActiveModel::Serializer
-  attributes :user_id, :books, :read, :bought
+  attributes :books
 
 end

@@ -52,7 +52,7 @@ class Categories extends Component{
                     }} />
                     <Route path="/book_browser/categories/:category" component={() => {
                         return (
-                            <CategoryResults />
+                            <CategoryResults handleAddToBookshelf={this.props.handleAddToBookshelf} />
                         )
                     }}
                     />

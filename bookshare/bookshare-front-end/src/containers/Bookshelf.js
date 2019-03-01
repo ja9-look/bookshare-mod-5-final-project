@@ -13,7 +13,8 @@ class Bookshelf extends Component {
 
     componentDidMount = () => {
         if (this.props.currentUser) {
-            API.getBookshelf(this.props.currentUser.bookshelf).then(data => {
+            API.getBookshelf(this.props.currentUser.bookshelf)
+            .then(data => {
                 console.log(data)
             })
             console.log(`user:`, this.props.currentUser)

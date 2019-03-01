@@ -40,17 +40,17 @@ class BookBrowser extends Component {
                         />
                         <Route path="/book_browser/categories" component={() => {
                             return(
-                                <Categories />
+                                <Categories handleAddToBookshelf={this.props.handleAddToBookshelf}/>
                             )
                         }} />                       
                         <Route exact path="/book_browser/books/:isbn" component={() => {
                             return(
-                                <BookDescription />
+                                <BookDescription handleAddToBookshelf={this.props.handleAddToBookshelf}/>
                             )
                         }} />
                         <Route exact path="/book_browser/:searchTerm" component={() => {
                            return(
-                               <SearchResults />
+                               <SearchResults handleAddToBookshelf={this.props.handleAddToBookshelf}/>
                            ) 
                         }} />
                     </Switch>

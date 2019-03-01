@@ -295,22 +295,25 @@ button:hover {
 }
 
 .bookDetails {
-  max-width: 50vw;
+  max-width: 40vw;
   margin: auto;
   padding: 2em 4em;
   background-color: #ffffff40;
   border-radius: 20px;
+  box-shadow: 5px 5px #88888840;
 }
 
 .bookDetails h4 {
   text-transform: uppercase;
+  font-size: 18px;
 }
 
 .bookDetails h6 {
-  padding-bottom: 10px;
+  font-size: 16px;
 }
 
 .bookDetails p {
-  padding-top: 20px;
+  padding-top: 15px;
   font-size: 14px;
+  text-align: justify;
 }

@@ -6,6 +6,8 @@ import Aux from '../hoc/Aux';
 
 const Navbar = (props) => {
 
+    console.log(props.currentUser)
+
     return(
         <Aux>
             <nav className="navbar">

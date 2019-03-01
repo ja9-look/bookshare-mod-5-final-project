@@ -21,6 +21,11 @@ class Api::V1::UsersController < Api::V1::ApplicationController
         end
     end
 
+    def bookshelf
+        @user = current_user
+        render json: @user.bookshelf
+    end
+
     private
     def user_params
         params.require(:user).permit(:username, :password, :first_name, :last_name)

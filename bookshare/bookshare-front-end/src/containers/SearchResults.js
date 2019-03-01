@@ -24,7 +24,7 @@ class SearchResults extends Component{
         return(
             <Aux>
                 {this.state.books.map(book =>
-                    <BookCard key={book.id} book={book} />
+                    <BookCard key={book.id} book={book} handleAddToBookshelf={this.props.handleAddToBookshelf}/>
                 )}
             </Aux>
         )

@@ -9,7 +9,7 @@ class API {
         this.usersURL = this.endPoint + `/users`
         this.loginURL = this.endPoint + `/login`
         this.profileURL = this.endPoint + `/profile`
-        this.bookshelfURL = this.endPoint + `/bookshelves`
+        this.bookshelfURL = this.endPoint + `/bookshelf`
     }
 
     static createUser(user) {
@@ -28,8 +28,8 @@ class API {
         return this.getFromGoogle(this.googleBooksURL, searchTerm)
     }
 
-    static getBookshelf(id) {
-        return this.get(this.bookshelfURL + `/${id}`)
+    static getBookshelf() {
+        return this.get(this.bookshelfURL)
     }
 
     static getBooksByIsbn(isbn){
@@ -47,6 +47,10 @@ class API {
             .then(resp => resp.json())
     }
 
+    static addBookToBookshelf(isbn, bookshelfId) {
+        return this.post(`${this.bookshelfURL}/${bookshelfId}/add`, isbn)
+        .then(resp => resp.json())
+    }
 
     static get(url) {
         return fetch(url, {
@@ -72,5 +76,7 @@ class API {
 }
 
 API.init()
+
+window.API = API
 
 export default API;

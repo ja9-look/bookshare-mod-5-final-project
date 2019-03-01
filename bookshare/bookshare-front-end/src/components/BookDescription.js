@@ -20,15 +20,15 @@ class BookDescription extends Component{
     render(){
 
         const book = this.state.data.items
-        console.log(`books:`, book)
         return(
         book ? 
-                <div className="bookDetails">
+                <div className="bookDetails" id={this.props.match.params.isbn}>
                     <img alt={book[0].volumeInfo.title} src={book[0].volumeInfo.imageLinks ? book[0].volumeInfo.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} />
                     <h4>{book[0].volumeInfo.title}</h4>
                     <h6>ISBN: {this.props.match.params.isbn}</h6>
                     <h6>{book[0].volumeInfo.authors ? book[0].volumeInfo.authors.map(author => `| ${author} |`) : `(No Description Available)`}</h6>
                     <p>{book[0].volumeInfo.description}</p>
+                    <button className={'addToBookshelfButton'} onClick={this.props.handleAddToBookshelf}> + Bookshelf</button>
                 </div>
             : 
             null

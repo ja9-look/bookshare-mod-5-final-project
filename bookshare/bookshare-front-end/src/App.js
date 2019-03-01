@@ -14,7 +14,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    current_user: '',
+    currentUser: '',
     logged_in: false
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
             currentUser: data.user
           })
         })
-        .then(API.getAllBooks().then(data => console.log(data)))
+        .then(API.getAllBooks())
     }
   }
 
@@ -41,6 +41,7 @@ class App extends Component {
         this.login(data)
         this.props.history.push("/book_browser")
         this.setState({
+          currentUser: data,
           logged_in: true
         })
       })
@@ -81,6 +82,7 @@ class App extends Component {
   handleLogOut = () => {
     localStorage.removeItem('token')
     this.setState({
+      currentUser: '',
       logged_in: false
     })
   }
@@ -99,6 +101,14 @@ class App extends Component {
     signUpWrapper.classList.remove('visible')
   }
 
+  handleAddToBookshelf = (event) => {
+    event.preventDefault()
+    console.log(`isbn:`, event.target.parentElement.id)
+    console.log(`bookshelf_id:`, this.state.currentUser.bookshelf)
+    const isbn = event.target.parentElement.id
+    // API.addBookToBookshelf(isbn, )
+  }
+
   render() {
     return (
       <div className="App">
@@ -114,7 +124,7 @@ class App extends Component {
               return (
                 <Aux>
                   <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser}/>
-                  <BookBrowser />
+                  <BookBrowser handleAddToBookshelf={this.handleAddToBookshelf}/>
                 </Aux>
               )
             }

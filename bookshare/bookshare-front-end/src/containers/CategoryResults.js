@@ -25,7 +25,7 @@ class CategoryResults extends Component {
                 <h4>{this.props.match.params.category}</h4>
                 <div className={'booksBrowserWrapper'}>
                     {this.state.booksByCategory.map(book => 
-                        <BookCard book={book} />
+                        <BookCard book={book} handleAddToBookshelf={this.props.handleAddToBookshelf}/>
                     )}
                 </div>
             </div>
