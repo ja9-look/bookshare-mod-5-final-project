@@ -25,7 +25,6 @@ class App extends Component {
             currentUser: data
           })
         })
-        .then(API.getAllBooks())
     }
   }
 
@@ -110,10 +109,16 @@ class App extends Component {
 
   handleAddToBookshelf = (event) => {
     event.preventDefault()
-    console.log(`isbn:`, event.target.parentElement.id)
-    console.log(`bookshelf_id:`, this.state.currentUser.user.bookshelf)
     const isbn = event.target.parentElement.id
-    // API.addBookToBookshelf(isbn, )
+    const bookshelf_id = this.state.currentUser.user.bookshelf
+    API.getBookshelf(bookshelf_id)
+    .then(data => {
+      console.log(data.bookshelf.book_bookshelves)
+      console.log(isbn)
+      //find where the isbn is equal to const isbn
+      //if not present, send post request to books API,then add to book_bookshelves API
+      //if present, check if it is in book_bookshelves API, if not, then add to book_bookshelves API
+    })
   }
 
   render() {

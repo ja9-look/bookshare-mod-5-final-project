@@ -47,10 +47,15 @@ class API {
             .then(resp => resp.json())
     }
 
-    static addBookToBookshelf(isbn, bookshelfId) {
-        return this.post(`${this.bookshelfURL}/${bookshelfId}/add`, isbn)
-        .then(resp => resp.json())
+    static addBookToBookshelf(isbn) {
+        return this.post(this.booksURL, isbn)
+            .then(resp => resp.json())
     }
+
+    // static updateBookInfo(fieldToUpdate) {
+    //     return this.patch(this.booksURL, fieldToUpdate)
+    //     .then(resp => resp.json())
+    // }
 
     static get(url) {
         return fetch(url, {
@@ -72,6 +77,18 @@ class API {
             body: JSON.stringify(data)
         }).then(data => data.json())
     }
+
+    // static patch(url, data) {
+    //     return fetch(url, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             "Content-Type": "application/json",
+    //             Accept: 'application/json',
+    //             Authorization: `Bearer ${localStorage.getItem('token')}`
+    //         },
+    //         body: JSON.stringify(data)
+    //     }).then(data => data.json())
+    // }
 
 }
 
