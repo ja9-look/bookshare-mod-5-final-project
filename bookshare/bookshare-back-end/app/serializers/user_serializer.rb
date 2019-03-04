@@ -4,4 +4,5 @@ class UserSerializer < ActiveModel::Serializer
   def bookshelf
     self.object.bookshelf.id if self.object.bookshelf
   end
+  
 end

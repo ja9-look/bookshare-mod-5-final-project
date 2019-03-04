@@ -7,10 +7,24 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.destroy_all
+Bookshelf.destroy_all
+Book.destroy_all
 
 users = [
-  {username: 'Ja9', password: 'janine', first_name: 'Janine', last_name: 'L'},
- 
+  {username: 'Ja9', password: 'janine', first_name: 'Janine', last_name: 'L'}
 ]
 
 users.each {|user| User.create(user)}
+
+
+bookshelves = [
+  {user_id: 1}
+]
+
+bookshelves.each {|bookshelf| Bookshelf.create(bookshelf)}
+
+books = [ 
+  {isbn: 8772895802}
+]
+
+books.each {|book| Book.create(book)}

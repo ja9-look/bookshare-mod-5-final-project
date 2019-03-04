@@ -14,16 +14,15 @@ import './App.css';
 class App extends Component {
 
   state = {
-    currentUser: '',
-    logged_in: false
-  }
+    currentUser: ''
+    }
 
   componentDidMount() {
     if (localStorage.token) {
       API.getCurrentUser()
         .then(data => {
           this.setState({
-            currentUser: data.user
+            currentUser: data
           })
         })
         .then(API.getAllBooks())
@@ -33,24 +32,28 @@ class App extends Component {
   handleLogin = (event) => {
     event.preventDefault()
     const user = {
-      username: event.target.username.value,
-      password: event.target.password.value
+      username : event.target.username.value,
+      password : event.target.password.value
     }
     API.login(user)
-      .then(data => {
-        this.login(data)
-        this.props.history.push("/book_browser")
-        this.setState({
-          currentUser: data,
-          logged_in: true
-        })
+      .then( data => {
+        if (data.message){
+          this.props.history.push("/")
+        }
+        else {
+          this.login(data)
+          this.setState({
+            currentUser: data
+          })
+        }
       })
-    event.target.username.value = ''
-    event.target.password.value = ''
+      event.target.username.value = ''
+      event.target.password.value = ''
   }
 
   login = (data) => {
     localStorage.setItem('token', data.jwt)
+    this.props.history.push("/book_browser")
   }
 
   handleSignUp = (event) => {
@@ -62,20 +65,25 @@ class App extends Component {
       password: event.target.password.value
     }
     this.createUser(newUser)
-    event.target.first_name.value = ''
-    event.target.last_name.value = ''
-    event.target.username.value = ''
-    event.target.password.value = ''
+      event.target.first_name.value = ''
+      event.target.last_name.value = ''
+      event.target.username.value = ''
+      event.target.password.value = ''
   }
 
   createUser = (newUser) => {
     API.createUser(newUser)
       .then(data => {
-        this.login(data)
-                this.props.history.push("/book_browser")
-        this.setState({
-          logged_in: true
-        })
+        if(data.error) {
+          this.props.history.push("/")
+        }
+        else {
+          this.login(data)
+          this.props.history.push("/book_browser")
+          this.setState({
+            currentUser : data
+          })
+        }
       })
   }
 
@@ -83,7 +91,6 @@ class App extends Component {
     localStorage.removeItem('token')
     this.setState({
       currentUser: '',
-      logged_in: false
     })
   }
 
@@ -104,7 +111,7 @@ class App extends Component {
   handleAddToBookshelf = (event) => {
     event.preventDefault()
     console.log(`isbn:`, event.target.parentElement.id)
-    console.log(`bookshelf_id:`, this.state.currentUser.bookshelf)
+    console.log(`bookshelf_id:`, this.state.currentUser.user.bookshelf)
     const isbn = event.target.parentElement.id
     // API.addBookToBookshelf(isbn, )
   }
@@ -130,7 +137,7 @@ class App extends Component {
             }
             } />
             { this.state.currentUser ?
-              <Route path={`/bookshelves/${this.state.currentUser.bookshelf}`} component={() => {
+              <Route path={`/bookshelves/${this.state.currentUser.user.bookshelf}`} component={() => {
                 return (
                   <Aux>
                     <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser} />

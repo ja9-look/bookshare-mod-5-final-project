@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:create]
       resources :bookshelves, except: [:index, :create, :delete]
-      get '/bookshelf/add', to: 'bookshelves#add'
+      get '/bookshelves/add', to: 'bookshelves#add'
       post '/login', to: 'auth#create'
       get '/users', to: 'users#index'
       get '/profile', to: 'users#profile'

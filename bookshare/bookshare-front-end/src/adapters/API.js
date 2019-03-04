@@ -9,7 +9,7 @@ class API {
         this.usersURL = this.endPoint + `/users`
         this.loginURL = this.endPoint + `/login`
         this.profileURL = this.endPoint + `/profile`
-        this.bookshelfURL = this.endPoint + `/bookshelf`
+        this.bookshelfURL = this.endPoint + `/bookshelves`
     }
 
     static createUser(user) {
@@ -28,8 +28,8 @@ class API {
         return this.getFromGoogle(this.googleBooksURL, searchTerm)
     }
 
-    static getBookshelf() {
-        return this.get(this.bookshelfURL)
+    static getBookshelf(id) {
+        return this.get(this.bookshelfURL + `/${id}`)
     }
 
     static getBooksByIsbn(isbn){

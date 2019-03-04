@@ -317,3 +317,9 @@ button:hover {
   font-size: 14px;
   text-align: justify;
 }
+
+.bookshelfWelcome h4 {
+  text-transform: uppercase;
+  font-size: 36px;
+  color: #ffffff;
+}
