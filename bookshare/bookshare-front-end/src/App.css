@@ -323,3 +323,7 @@ button:hover {
   font-size: 36px;
   color: #ffffff;
 }
+
+.addToFavourites {
+  width: 35px;
+}
