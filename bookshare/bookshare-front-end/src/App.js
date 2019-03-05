@@ -111,14 +111,8 @@ class App extends Component {
     event.preventDefault()
     const isbn = event.target.parentElement.id
     const bookshelf_id = this.state.currentUser.user.bookshelf
-    API.getBookshelf(bookshelf_id)
-    .then(data => {
-      console.log(data.bookshelf.book_bookshelves)
-      console.log(isbn)
-      //find where the isbn is equal to const isbn
-      //if not present, send post request to books API,then add to book_bookshelves API
-      //if present, check if it is in book_bookshelves API, if not, then add to book_bookshelves API
-    })
+    // add book to CORRECT bookshelf
+    API.addBookToBookshelf(bookshelf_id, isbn).then(data => console.log(data))
   }
 
   render() {

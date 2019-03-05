@@ -5,7 +5,6 @@ class API {
     static init() {
         this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=`
         this.endPoint = `http://localhost:3000/api/v1`
-        this.booksURL = this.endPoint + `/books`
         this.usersURL = this.endPoint + `/users`
         this.loginURL = this.endPoint + `/login`
         this.profileURL = this.endPoint + `/profile`
@@ -47,15 +46,9 @@ class API {
             .then(resp => resp.json())
     }
 
-    static addBookToBookshelf(isbn) {
-        return this.post(this.booksURL, isbn)
-            .then(resp => resp.json())
+    static addBookToBookshelf(id, isbn) {
+        return this.post(this.bookshelfURL + `/${id}/add`, { isbn } )
     }
-
-    // static updateBookInfo(fieldToUpdate) {
-    //     return this.patch(this.booksURL, fieldToUpdate)
-    //     .then(resp => resp.json())
-    // }
 
     static get(url) {
         return fetch(url, {
@@ -78,17 +71,17 @@ class API {
         }).then(data => data.json())
     }
 
-    // static patch(url, data) {
-    //     return fetch(url, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //             Accept: 'application/json',
-    //             Authorization: `Bearer ${localStorage.getItem('token')}`
-    //         },
-    //         body: JSON.stringify(data)
-    //     }).then(data => data.json())
-    // }
+    static patch(url, data) {
+        return fetch(url, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                Accept: 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(data)
+        }).then(data => data.json())
+    }
 
 }
 
