@@ -20,4 +20,15 @@ class Api::V1::BookshelvesController < Api::V1::ApplicationController
         render json: { message: 'success'}
     end
 
+    def update_read
+        @bookshelf = Bookshelf.find(params[:id])
+        @book = Book.where(isbn: params[:isbn]).first
+        @bookbookshelf = BookBookshelf.where(bookshelf_id: params[:id], book_id: @book.id).first
+        if @bookbookshelf.read == true
+            @bookbookshelf.update(read: true)
+        else
+            @bookbookshelf.update(read: false)
+        end
+    end
+
 end

@@ -111,7 +111,6 @@ class App extends Component {
     event.preventDefault()
     const isbn = event.target.parentElement.id
     const bookshelf_id = this.state.currentUser.user.bookshelf
-    // add book to CORRECT bookshelf
     API.addBookToBookshelf(bookshelf_id, isbn).then(data => console.log(data))
   }
 
@@ -130,7 +129,7 @@ class App extends Component {
               return (
                 <Aux>
                   <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser}/>
-                  <BookBrowser handleAddToBookshelf={this.handleAddToBookshelf}/>
+                  <BookBrowser handleAddToBookshelf={this.handleAddToBookshelf} currentUser={this.state.currentUser}/>
                 </Aux>
               )
             }

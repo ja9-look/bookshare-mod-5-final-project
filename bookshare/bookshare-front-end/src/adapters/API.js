@@ -9,6 +9,7 @@ class API {
         this.loginURL = this.endPoint + `/login`
         this.profileURL = this.endPoint + `/profile`
         this.bookshelfURL = this.endPoint + `/bookshelves`
+        this.bookbookshelfURL = this.endPoint + `/bookbookshelves`
     }
 
     static createUser(user) {
@@ -49,6 +50,11 @@ class API {
     static addBookToBookshelf(id, isbn) {
         return this.post(this.bookshelfURL + `/${id}/add`, { isbn } )
     }
+
+    static updateReadStatusBook(id, read) {
+        return this.patch(this.bookbookshelves + `/${id}/update`, { read } )
+    }
+    
 
     static get(url) {
         return fetch(url, {

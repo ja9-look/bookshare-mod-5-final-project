@@ -25,11 +25,13 @@ class Bookshelf extends Component {
         }
     }
 
-    // handleReadClick = (event) => {
-    //     event.preventDefault()
-    //     console.log(`read book:`, event.target.parentElement.id)
-    //     const bookToUpdate = event.target.parentElement.id
-    // }
+    handleReadClick = (event) => {
+        event.preventDefault()
+        console.log(event.target.parentElement.id)
+        document.querySelector('.readButton').classList.toggle('focus')
+        
+    }
+    
 
     render() {
         return (
@@ -39,11 +41,11 @@ class Bookshelf extends Component {
                         <source src={require('../images/distant_lights.mp4')} type="video/mp4" />
                     </video>
                         <h4>My bookshelf</h4>
+                    <div className={'booksBrowserWrapper'}>
                         {this.state.allBooks.map(book => {
-                            console.log(`book information:`, book)
                             return (
                                 <Link to={book.industryIdentifiers ? `/book_browser/books/${book.industryIdentifiers[0].identifier}` : "/"} style={{ textDecoration: 'none', color: '#000000' }} >
-                                    <div className={'bookCardWrapper'} id={book.industryIdentifiers ? book.industryIdentifiers[0].identifier : null} onClick={this.handleBookClick}>
+                                    <div className={'bookCardWrapper'}>
                                         <img className={'bookImage'} src={book.imageLinks ? book.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} alt={book.title} />
                                         <h6 className={'bookTitle'}>{book.title ? (book.title.length > 20 ? book.title.substring(0, 20) + `...` : book.title) : "(No Title Available)"}</h6>
                                         <p className={'bookAuthor'}>{book.authors ? book.authors[0] : "(No Author Available)"}</p>
@@ -56,6 +58,7 @@ class Bookshelf extends Component {
                             )
                         }
                         )}
+                    </div>
                 </div>
             </div>
         )
