@@ -9,7 +9,6 @@ class API {
         this.loginURL = this.endPoint + `/login`
         this.profileURL = this.endPoint + `/profile`
         this.bookshelfURL = this.endPoint + `/bookshelves`
-        this.bookbookshelfURL = this.endPoint + `/bookbookshelves`
     }
 
     static createUser(user) {
@@ -51,8 +50,20 @@ class API {
         return this.post(this.bookshelfURL + `/${id}/add`, { isbn } )
     }
 
-    static updateReadStatusBook(id, read) {
-        return this.patch(this.bookbookshelves + `/${id}/update`, { read } )
+    static updateReadStatusBook(id, isbn) {
+        return this.patch(this.bookshelfURL + `/${id}/updateread`, { isbn } )
+    }
+
+    static updateBoughtStatusBook(id, isbn) {
+        return this.patch(this.bookshelfURL + `/${id}/updatebought`, { isbn })
+    }
+
+    static addBookToFavourites(id, isbn) {
+        return this.patch(this.bookshelfURL + `/${id}/addtofavourites`, { isbn })
+    }
+
+    static deleteBookshelf(id, isbn) {
+        return this.delete(this.bookshelfURL + `/${id}/book_bookshelves/${isbn}`)
     }
     
 
@@ -86,7 +97,16 @@ class API {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(data)
-        }).then(data => data.json())
+        }).then(resp => resp.json())
+    }
+
+    static delete(url) {
+        return fetch(url, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(resp => resp.json())
     }
 
 }

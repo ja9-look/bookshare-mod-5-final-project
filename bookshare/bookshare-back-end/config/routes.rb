@@ -4,7 +4,10 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resources :bookshelves, except: [:index, :create, :delete]
       post '/bookshelves/:id/add', to: 'bookshelves#add'
-      patch '/bookbookshelves/:id/update', to: 'bookshelves#update_read'
+      patch '/bookshelves/:id/updateread', to: 'bookshelves#update_read'
+      patch '/bookshelves/:id/updatebought', to: 'bookshelves#update_bought'
+      patch '/bookshelves/:id/addtofavourites', to: 'bookshelves#update_favourite'
+      delete '/bookshelves/:bookshelf_id/book_bookshelves/:isbn', to: 'bookshelves#delete_book'
       post '/login', to: 'auth#create'
       get '/users', to: 'users#index'
       get '/profile', to: 'users#profile'

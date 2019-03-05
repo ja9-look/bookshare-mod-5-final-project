@@ -10,7 +10,7 @@ class BookCard extends Component {
 
         return(
             <Link to={ industryIdentifiers ? `/book_browser/books/${industryIdentifiers[0].identifier}` :  "/" } style={{ textDecoration: 'none', color: '#000000' }} >
-                <div className={'bookCardWrapper'}>
+                <div className={'bookCardWrapper'} id={book.industryIdentifiers[0].identifier}>
                     <img className={'bookImage'} src={book.imageLinks ? book.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} alt={book.title}/>
                     <h6 className={'bookTitle'}>{book.title ? (book.title.length > 20 ? book.title.substring(0, 20) + `...` : book.title) : "(No Title Available)"}</h6>
                     <p className={'bookAuthor'}>{book.authors ? book.authors[0] : "(No Author Available)"}</p>
