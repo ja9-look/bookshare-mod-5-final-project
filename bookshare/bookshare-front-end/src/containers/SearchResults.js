@@ -8,7 +8,7 @@ import BookCard from '../components/BookCard';
 class SearchResults extends Component{
 
     state = {
-        books: []
+        books: [],
     }
 
     componentDidMount(){

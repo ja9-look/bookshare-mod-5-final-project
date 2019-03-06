@@ -346,7 +346,7 @@ button:hover {
   margin: 0;
 }
 
-.readButton:focus {
+.readButton.focus {
   background-color: #e06969;
   color: #ffffff;
 }
@@ -360,7 +360,7 @@ button:hover {
   margin: 0;
 }
 
-.boughtButton:focus {
+.boughtButton.focus {
   background-color: #e06969;
   color: #ffffff;
 }
@@ -399,11 +399,56 @@ button:hover {
   display: none;
 }
 
-.dropdown-content a {
+.dropdown-content p {
   display: block;
-  padding: 8px 2px;
+  padding: 2px 2px;
 }
 
-.dropdown-content a:hover {
+.dropdown-content p:hover {
   background-color: #e06969CC;
+  cursor: pointer;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+    transform: translate(-400px, 0);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-400px, 0);
+  }
+
+}
+
+.popup {
+  display: none;
+  position: fixed;
+  top: 100px;
+  left: 50px;
+  width: 300px;
+  color: #e06969;
+  text-align: left;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 12px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  border-radius: 15px;
+  padding: 1em;
+  text-align: center;
+  background-color: rgba(255, 255, 255, .8)
+
+}
+
+.popup.visible {
+  display: block;
+  animation: fade 5s forwards;
 }

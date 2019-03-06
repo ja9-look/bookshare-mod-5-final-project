@@ -14,7 +14,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    currentUser: ''
+    currentUser: '',
     }
 
   componentDidMount() {
@@ -111,7 +111,17 @@ class App extends Component {
     event.preventDefault()
     const isbn = event.target.parentElement.id
     const bookshelf_id = this.state.currentUser.user.bookshelf
-    API.addBookToBookshelf(bookshelf_id, isbn).then(data => console.log(data))
+    API.addBookToBookshelf(bookshelf_id, isbn)
+    .then(() => {
+      document.querySelector('.popup').classList.add('visible')
+      this.handlePopup()
+    })
+  }
+
+  handlePopup = () => {
+      setTimeout(() => {
+        document.querySelector('.popup').classList.remove('visible')
+      }, 5000)
   }
 
   render() {
@@ -129,6 +139,9 @@ class App extends Component {
               return (
                 <Aux>
                   <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser}/>
+                    <div className={'popup'}>
+                      <p className={'popupText'}>♡ Added to Bookshelf ♡</p>
+                    </div>
                   <BookBrowser handleAddToBookshelf={this.handleAddToBookshelf} currentUser={this.state.currentUser}/>
                 </Aux>
               )
@@ -139,6 +152,9 @@ class App extends Component {
                 return (
                   <Aux>
                     <Navbar handleLogOut={this.handleLogOut} currentUser={this.state.currentUser} />
+                      <div className={'popup'}>
+                        <p className={'popupText'}>♡ Added to Bookshelf ♡</p>
+                      </div>
                     <Bookshelf currentUser={this.state.currentUser} />
                   </Aux>
                 )
