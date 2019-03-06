@@ -58,6 +58,13 @@ class Bookshelf extends Component {
         .then(this.props.history.push(`/bookshelves/${id}`))
     }
 
+    handleFilterToggle = (event) => {
+        event.preventDefault()
+        const dropdownContent = document.querySelector('.dropdown-content')
+        dropdownContent.classList.toggle('hidden')
+    }
+    
+
     render() {
         return (
             <div className={'bookshelfBrowserWrapper'}>
@@ -66,6 +73,14 @@ class Bookshelf extends Component {
                         <source src={require('../images/distant_lights.mp4')} type="video/mp4" />
                     </video>
                         <h4>My bookshelf</h4>
+                        <div class="filterBookshelf">
+                        <button class={'filterBookshelfButton'} onClick={this.handleFilterToggle} >Filter ▼</button>
+                            <div class="dropdown-content hidden">
+                                <a>Read</a>
+                                <a>Bought</a>
+                                <a>Favourites</a>
+                            </div>
+                        </div>
                     <div className={'booksBrowserWrapper'}>
                         {this.state.allBooks.map(book => {
                             return (

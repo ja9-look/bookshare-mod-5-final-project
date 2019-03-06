@@ -371,3 +371,39 @@ button:hover {
   width: 100%;
   margin: 0; 
 }
+
+.filterBookshelf {
+  display: inline-block;
+  justify-content: flex-end;
+}
+
+.filterBookshelfButton {
+  margin: 0;
+}
+
+.dropdown-content {
+  position: absolute;
+  background-color: #ffffff40;
+  text-decoration: none;
+  list-style: none;
+  color: #ffffff;
+  text-align: left;
+  font-family: 'Comfortaa', sans-serif;
+  font-size: 12px;
+  letter-spacing: 5px;
+  padding: 6px;
+  text-transform: uppercase;
+}
+
+.dropdown-content.hidden {
+  display: none;
+}
+
+.dropdown-content a {
+  display: block;
+  padding: 8px 2px;
+}
+
+.dropdown-content a:hover {
+  background-color: #e06969CC;
+}
