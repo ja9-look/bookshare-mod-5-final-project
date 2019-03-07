@@ -230,6 +230,15 @@ button:hover {
   background-color: #ffffff40;
   border-radius: 20px;
   box-shadow: 5px 5px #88888840;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookCardWrapper img {
+  width: 8em;
+  height: auto;
 }
 
 .bookCardWrapper h6 {

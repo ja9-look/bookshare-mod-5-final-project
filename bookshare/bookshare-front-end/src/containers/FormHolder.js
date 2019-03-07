@@ -15,7 +15,7 @@ class FormHolder extends Component {
         return (
                 <div className={'form_holder'}>
                 <video autoPlay loop className={'video-background'} muted playsInline>
-                    <source src={`https://res.cloudinary.com/ja9-look/video/upload/v1551958530/buch8.mp4`} type="video/mp4" />
+                    <source src={`https://res.cloudinary.com/ja9-look/video/upload/q_50/v1551958530/buch8.mp4`} type="video/mp4" />
                 </video>
                     <p>bookshare</p>
                     <button className={'signUpFormToggler'} onClick={this.props.handleSignUpToggle}>sign up</button>

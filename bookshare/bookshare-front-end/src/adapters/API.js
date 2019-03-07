@@ -1,9 +1,8 @@
-// import googleAPIKey from '../key.js';
 
 class API {
 
     static init() {
-        this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?q=`
+        this.googleBooksURL = `https://www.googleapis.com/books/v1/volumes?key=${process.env.REACT_APP_GOOGLE_API_KEY}&q=`
         this.endPoint = `http://localhost:3000/api/v1`
         this.usersURL = this.endPoint + `/users`
         this.loginURL = this.endPoint + `/login`
