@@ -121,7 +121,7 @@ class App extends Component {
   handlePopup = () => {
       setTimeout(() => {
         document.querySelector('.popup').classList.remove('visible')
-      }, 5000)
+      }, 3000)
   }
 
   render() {

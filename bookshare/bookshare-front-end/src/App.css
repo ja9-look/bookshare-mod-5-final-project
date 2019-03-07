@@ -88,7 +88,8 @@ button:hover {
 }
 
 .addToBookshelfButton {
-  font-size: 8px;
+  font-size: 10px;
+  padding: 12px;
 }
 
 .form_holder p{
@@ -120,15 +121,28 @@ button:hover {
 .loginWrapper {
   display:none;
   margin-top: 30px;
+  animation: movedown 1s;
 }
 
 .signUpWrapper.visible{
   display: block;
+  animation: moveup .7s;
 }
 
 .loginWrapper.visible{
   display: block;
+  animation: moveup .7s;
 }
+
+@keyframes moveup {
+  0% {
+    transform: translate(0, 400px);
+  }
+  100% {
+    transform: translate(0,0);
+  }
+}
+
 
 .loginForm input,
 .signUpForm input {
@@ -322,6 +336,8 @@ button:hover {
   text-transform: uppercase;
   font-size: 36px;
   color: #ffffff;
+  margin: 0;
+  line-height: 42px;
 }
 
 .bookshelfBrowserWrapper {
@@ -372,6 +388,15 @@ button:hover {
   margin: 0; 
 }
 
+.bookshelfTitleFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1em auto;
+  width: 88%;
+  max-width: 1600px;
+}
+
 .filterBookshelf {
   display: inline-block;
   justify-content: flex-end;
@@ -383,10 +408,10 @@ button:hover {
 
 .dropdown-content {
   position: absolute;
-  background-color: #ffffff40;
+  background-color: #ffffffF2;
   text-decoration: none;
   list-style: none;
-  color: #ffffff;
+  color: #e06969;
   text-align: left;
   font-family: 'Comfortaa', sans-serif;
   font-size: 12px;
@@ -416,11 +441,19 @@ button:hover {
   }
   10% {
     opacity: 1;
+    transform: translate(20px, 0);
+  }
+  15% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  87% {
+    opacity: 1;
     transform: translate(0, 0);
   }
   90% {
     opacity: 1;
-    transform: translate(0, 0);
+    transform: translate(20px, 0);
   }
   100% {
     opacity: 0;
@@ -450,5 +483,5 @@ button:hover {
 
 .popup.visible {
   display: block;
-  animation: fade 5s forwards;
+  animation: fade 3s forwards;
 }

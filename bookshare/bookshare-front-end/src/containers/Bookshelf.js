@@ -15,13 +15,19 @@ class Bookshelf extends Component {
                 const bookPromises = data.bookshelf.book_bookshelves.map(book =>
                     book.isbn
                         ? API.getBooksByIsbn(book.isbn)
-                            .then(data => ({
-                                ...book,
-                                ...data.items[0].volumeInfo 
-                            }))
+                            .then(data => {
+                                console.log(!data.error)
+                                if (!data.error) {
+                                return {
+                                    ...book,
+                                    ...data.items[0].volumeInfo
+                                }
+                                }
+                            })
                         : book
                 )
-                const allBooks = await Promise.all(bookPromises)
+                const allBooks = (await Promise.all(bookPromises)).filter(book => book)
+                console.log(allBooks)
                 this.setState({ allBooks })
             })
         }
@@ -67,7 +73,8 @@ class Bookshelf extends Component {
 
     handleReadFilter = (event) => {
         event.preventDefault()
-        this.getBooksby(`read`)
+        console.log(this)
+        this.getBooksBy(`read`)
     }
 
     handleBoughtFilter = (event) => {
@@ -77,7 +84,7 @@ class Bookshelf extends Component {
 
     handleFavouritesFilter = (event) => {
         event.preventDefault()
-        this.getBooksBy(`favourites`)
+        this.getBooksBy(`favourite`)
     }
 
     getBooksBy = (filter) => {
@@ -88,10 +95,15 @@ class Bookshelf extends Component {
                     return book[filter] &&
                         (book.isbn
                             ? API.getBooksByIsbn(book.isbn)
-                                .then(data => ({
-                                    ...book,
-                                    ...data.items[0].volumeInfo
-                                }))
+                                .then(data => {
+                                    console.log(!data.error)
+                                    if (!data.error){
+                                    return({
+                                        ...book,
+                                        ...data.items[0].volumeInfo
+                                    })
+                                }
+                                })
                             : book)
                 })
                 const allBooks = (await Promise.all(bookPromises)).filter(book => book)
@@ -114,6 +126,7 @@ class Bookshelf extends Component {
                     <video autoPlay loop className={'video-background'} muted playsInline>
                         <source src={require('../images/distant_lights.mp4')} type="video/mp4" />
                     </video>
+                    <div className={'bookshelfTitleFilter'}>
                         <h4>My bookshelf</h4>
                         <div className="filterBookshelf">
                         <button className={'filterBookshelfButton'} onClick={this.handleFilterToggle} >Filter ▼</button>
@@ -124,22 +137,24 @@ class Bookshelf extends Component {
                                 <p onClick={this.handleFavouritesFilter}>Favourites</p>
                             </div>
                         </div>
+                    </div>
                     <div className={'booksBrowserWrapper'}>
                         {this.state.allBooks.map(book => {
-                            // console.log(book)
-                            return (
-                                <Link to={book.industryIdentifiers ? `/book_browser/books/${book.industryIdentifiers[0].identifier}` : "/"} style={{ textDecoration: 'none', color: '#000000' }} >
-                                    <div className={'bookCardWrapper'} id={book.industryIdentifiers ? book.industryIdentifiers[0].identifier : ""}>
-                                        <img className={'bookImage'} src={book.imageLinks ? book.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} alt={book.title} />
-                                        <h6 className={'bookTitle'}>{book.title ? (book.title.length > 20 ? book.title.substring(0, 20) + `...` : book.title) : "(No Title Available)"}</h6>
-                                        <p className={'bookAuthor'}>{book.authors ? book.authors[0] : "(No Author Available)"}</p>
-                                        <img alt="favourite" className={'addToFavourites'} onClick = {this.handleAddToFavourites} src={(book.favourite) ? require("../images/heart.png") : require("../images/heart_blank.png")}/>
-                                        <button className={book.read ? "readButton" : "readButton focus"} onClick={this.handleReadClick}>Read</button>
-                                        <button className={book.bought ? "boughtButton" : "boughtButton focus"} onClick={this.handleBoughtClick}>Bought</button>
-                                        <button className={'removeButton'} onClick={this.handleRemoveClick}>Remove</button>
-                                    </div>
-                                </Link>
-                            )
+                            if (book.title) { 
+                                return (
+                                    <Link to={book.industryIdentifiers ? `/book_browser/books/${book.industryIdentifiers[0].identifier}` : "/"} style={{ textDecoration: 'none', color: '#000000' }} >
+                                        <div className={'bookCardWrapper'} id={book.industryIdentifiers ? book.industryIdentifiers[0].identifier : ""}>
+                                            <img className={'bookImage'} src={book.imageLinks ? book.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} alt={book.title} />
+                                            <h6 className={'bookTitle'}>{book.title ? (book.title.length > 20 ? book.title.substring(0, 20) + `...` : book.title) : "(No Title Available)"}</h6>
+                                            <p className={'bookAuthor'}>{book.authors ? book.authors[0] : "(No Author Available)"}</p>
+                                            <img alt="favourite" className={'addToFavourites'} onClick={this.handleAddToFavourites} src={(book.favourite) ? require("../images/heart.png") : require("../images/heart_blank.png")} />
+                                            <button className={book.read ? "readButton focus" : "readButton"} onClick={this.handleReadClick}>Read</button>
+                                            <button className={book.bought ? "boughtButton focus" : "boughtButton"} onClick={this.handleBoughtClick}>Bought</button>
+                                            <button className={'removeButton'} onClick={this.handleRemoveClick}>Remove</button>
+                                        </div>
+                                    </Link>
+                                )
+                            }
                         }
                         )}
                     </div>
