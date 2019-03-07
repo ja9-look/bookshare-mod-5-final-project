@@ -157,7 +157,7 @@ button:hover {
 
 .loginForm input[type=submit],
 .signUpForm input[type=submit] {
-	padding: 12px 24px;
+	padding: 20px 24px;
   margin: 20px auto;
   max-width: 200px;
 	font-size: 12px;
@@ -195,7 +195,7 @@ button:hover {
 }
 
 .searchBarForm input[type=submit] {
-	padding: 12px 24px;
+	padding: 20px 24px;
   font-size: 12px;
   margin-left: 0.5em;
   margin-right: 3.7em;

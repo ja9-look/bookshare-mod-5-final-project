@@ -14,7 +14,7 @@ class SearchResults extends Component{
     componentDidMount(){
         API.getAllBooks(this.props.match.params.searchTerm)
             .then((data) => {
-                console.log(data)
+                // console.log(data)
                 !data.error && 
                 this.setState({books: data.items})
             })

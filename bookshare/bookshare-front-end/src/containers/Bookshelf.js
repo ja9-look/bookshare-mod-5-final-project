@@ -16,7 +16,7 @@ class Bookshelf extends Component {
                     book.isbn
                         ? API.getBooksByIsbn(book.isbn)
                             .then(data => {
-                                console.log(!data.error)
+                                // console.log(!data.error)
                                 if (!data.error) {
                                 return {
                                     ...book,
@@ -27,7 +27,7 @@ class Bookshelf extends Component {
                         : book
                 )
                 const allBooks = (await Promise.all(bookPromises)).filter(book => book)
-                console.log(allBooks)
+                // console.log(allBooks)
                 this.setState({ allBooks })
             })
         }
@@ -51,7 +51,7 @@ class Bookshelf extends Component {
         event.preventDefault()
         const id = this.props.currentUser.user.bookshelf
         const isbn = event.target.parentElement.id        
-        console.log(id, isbn)
+        // console.log(id, isbn)
         API.addBookToFavourites(id, isbn)
         this.props.history.push(`/bookshelves/${this.props.currentUser.user.bookshelf}`)
     }
@@ -60,7 +60,7 @@ class Bookshelf extends Component {
         event.preventDefault()
         const id = this.props.currentUser.user.bookshelf
         const isbn = event.target.parentElement.id
-        console.log(id, isbn)
+        // console.log(id, isbn)
         API.deleteBookshelf(id, isbn)
         .then(this.props.history.push(`/bookshelves/${id}`))
     }
@@ -73,7 +73,7 @@ class Bookshelf extends Component {
 
     handleReadFilter = (event) => {
         event.preventDefault()
-        console.log(this)
+        // console.log(this)
         this.getBooksBy(`read`)
     }
 
@@ -91,12 +91,12 @@ class Bookshelf extends Component {
         API.getBookshelf(this.props.currentUser.user.bookshelf)
             .then(async data => {
                 const bookPromises = data.bookshelf.book_bookshelves.map(book => {
-                    console.log(book[filter])
+                    // console.log(book[filter])
                     return book[filter] &&
                         (book.isbn
                             ? API.getBooksByIsbn(book.isbn)
                                 .then(data => {
-                                    console.log(!data.error)
+                                    // console.log(!data.error)
                                     if (!data.error){
                                     return({
                                         ...book,
@@ -107,7 +107,7 @@ class Bookshelf extends Component {
                             : book)
                 })
                 const allBooks = (await Promise.all(bookPromises)).filter(book => book)
-                console.log(allBooks)
+                // console.log(allBooks)
                 this.setState({ allBooks })
             })
     }

@@ -41,7 +41,7 @@ class API {
     }
 
     static getBooksByCategory(url, category) {
-        return fetch(`${url}subject:${category}&maxResults=40`)
+        return fetch(`${url}subject:${category}&maxResults=10`)
             .then(resp => resp.json())
     }
 
