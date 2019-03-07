@@ -124,7 +124,7 @@ class Bookshelf extends Component {
             <div className={'bookshelfBrowserWrapper'}>
                 <div className={'contentArea'}>
                     <video autoPlay loop className={'video-background'} muted playsInline>
-                        <source src={require('../images/distant_lights.mp4')} type="video/mp4" />
+                        <source src={`https://res.cloudinary.com/ja9-look/video/upload/v1551958532/distant_lights.mp4`} type="video/mp4" />
                     </video>
                     <div className={'bookshelfTitleFilter'}>
                         <h4>My bookshelf</h4>
@@ -147,7 +147,7 @@ class Bookshelf extends Component {
                                             <img className={'bookImage'} src={book.imageLinks ? book.imageLinks.thumbnail : "https://data.europa.eu/euodp/sites/all/themes/openDataPortalTheme/images/no-image-icon.png"} alt={book.title} />
                                             <h6 className={'bookTitle'}>{book.title ? (book.title.length > 20 ? book.title.substring(0, 20) + `...` : book.title) : "(No Title Available)"}</h6>
                                             <p className={'bookAuthor'}>{book.authors ? book.authors[0] : "(No Author Available)"}</p>
-                                            <img alt="favourite" className={'addToFavourites'} onClick={this.handleAddToFavourites} src={(book.favourite) ? require("../images/heart.png") : require("../images/heart_blank.png")} />
+                                            <img alt="favourite" className={'addToFavourites'} onClick={this.handleAddToFavourites} src={(book.favourite) ? `https://res.cloudinary.com/ja9-look/image/upload/v1551958523/heart.png` : `https://res.cloudinary.com/ja9-look/image/upload/v1551958523/heart_blank.png`} />
                                             <button className={book.read ? "readButton focus" : "readButton"} onClick={this.handleReadClick}>Read</button>
                                             <button className={book.bought ? "boughtButton focus" : "boughtButton"} onClick={this.handleBoughtClick}>Bought</button>
                                             <button className={'removeButton'} onClick={this.handleRemoveClick}>Remove</button>

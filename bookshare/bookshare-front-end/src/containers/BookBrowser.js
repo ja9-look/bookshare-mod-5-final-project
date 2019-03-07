@@ -24,7 +24,7 @@ class BookBrowser extends Component {
         return(
             <div className={'contentArea'}>
                 <video autoPlay loop className={'video-background'} muted playsInline>
-                    <source src={require('../images/distant_lights.mp4')} type="video/mp4" />
+                    <source src={`https://res.cloudinary.com/ja9-look/video/upload/v1551958532/distant_lights.mp4`} type="video/mp4" />
                 </video>
                 <SearchBar handleSearchSubmit={this.handleSearchSubmit} />
                 <div className={'booksBrowserWrapper'}>
