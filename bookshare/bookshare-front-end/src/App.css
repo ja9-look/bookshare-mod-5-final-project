@@ -225,8 +225,8 @@ button:hover {
 .bookCardWrapper {
   width: 250px;
   height: 460px;
-  margin: 0 0.5em 1em 0.5em;
-  padding: 0.5em 0.5em 0.6em 0.5em;
+  margin: 1em;
+  padding: 1em 0.5em;
   background-color: #ffffff40;
   border-radius: 20px;
   box-shadow: 5px 5px #88888840;
@@ -236,8 +236,12 @@ button:hover {
   align-items: center;
 }
 
+.bookCardContent {
+  max-width: 90%;
+}
+
 .bookCardWrapper img {
-  width: 8em;
+  width: auto;
   height: auto;
 }
 
@@ -450,19 +454,19 @@ button:hover {
   }
   10% {
     opacity: 1;
-    transform: translate(20px, 0);
+    transform: translate(60px, 0);
   }
   15% {
     opacity: 1;
-    transform: translate(0, 0);
+    transform: translate(40px, 0);
   }
   87% {
     opacity: 1;
-    transform: translate(0, 0);
+    transform: translate(40px, 0);
   }
   90% {
     opacity: 1;
-    transform: translate(20px, 0);
+    transform: translate(60px, 0);
   }
   100% {
     opacity: 0;
@@ -493,4 +497,38 @@ button:hover {
 .popup.visible {
   display: block;
   animation: fade 3s forwards;
+}
+
+.bookshelfCardWrapper {
+  width: 250px;
+  height: 430px;
+  margin: 0 0.5em 1em 0.5em;
+  padding: 0.5em 0.5em 0.6em 0.5em;
+  background-color: #ffffff40;
+  border-radius: 20px;
+  box-shadow: 5px 5px #88888840;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bookshelfCardWrapper bookImage {
+  width: 8em;
+  height: auto;
+}
+
+.bookshelfCardWrapper addToFavourites {
+  width: 1em;
+  padding: 3em;
+}
+
+.bookshelfCardWrapper h6 {
+  font-size: 14px;
+  margin-bottom: 2px;
+  text-transform: uppercase;
+}
+
+.bookshelfCardWrapper p {
+  font-size: 12px;
 }
